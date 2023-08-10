@@ -1,12 +1,35 @@
 <h1>Pages#index</h1>
 <p>Find me in app/views/pages/index.html.erb</p>
-<div class="hasTooltip ">Hover me to see a tooltip</div>
-<div class="hidden qtip-shadow"> <!-- This class should hide the element, change it if needed -->
-    <p><b>Complex HTML</b> for your tooltip <i>here</i>!</p>
+
+
+
+<div>
+  <!-- Element with a tooltip -->
+  <a href="#" id="my-link" data-tooltip="Click me for a tooltip">Click me</a>
 </div>
 
-<p id="contents-button" data-hasqtip="button" aria-describedby="qtip-button"><span>Close buttons</span></p>
-
-<div class="qtip-tip" style="background-color: transparent !important; border: 0px !important; width: 8px; height: 8px; line-height: 8px; left: -1px; top: -8px;"><canvas width="16" height="16" style="background-color: transparent !important; border: 0px !important; width: 8px; height: 8px;"></canvas></div>
-<div class="qtip-content" id="qtip-click-content" aria-atomic="true">I can only be shown and hidden by clicking my target element</div>
-<p id="showhide-click" class="clickable" data-hasqtip="click" aria-describedby="qtip-click"><span>Click (and click again!)</span>view source</p>
+<script>
+  $(document).ready(function() {
+    // Initialize qTip tooltip
+    $('#my-link').qtip({
+      content: {
+        text: 'This is a qTip tooltip!',
+        title: {
+          text: 'Tooltip Title',
+          button: true // Show close button
+        }
+      },
+      position: {
+        my: 'top center',
+        at: 'bottom right',
+        target: $('#my-link') // Position relative to the element
+      },
+      style: {
+        classes: 'qtip-bootstrap', // Apply Bootstrap-like style
+        tip: {
+          corner: true // Show the tip
+        }
+      }
+    });
+  });
+</script>
